@@ -6,8 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import main.subsystems.DriveTrain;
-import main.subsystems.Pneumatics;
+import main.subsytems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,7 +30,7 @@ public class Robot extends IterativeRobot implements Constants{
      */
     public void robotInit() {
 		pn = new Pneumatics();			
-		dt = new DriveTrain();	
+		dt = new DriveTrain();
 		oi = new OI();   
     }
 	

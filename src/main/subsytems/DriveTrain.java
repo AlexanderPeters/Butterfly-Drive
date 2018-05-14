@@ -27,11 +27,10 @@ public class DriveTrain extends Subsystem implements Constants, HardwareAdapter 
 	}
 	
 	public void driveMechanum(double throttle, double heading, double straffe) {
-		mechanumDriveTrain.mecanumDrive_Cartesian(helper.handleOverPower(helper.handleDeadband(straffe, straffeDeadband)), helper.handleOverPower(helper.handleDeadband(heading, throttleDeadband)), helper.handleOverPower(helper.handleDeadband(throttle, headingDeadband)), 0.0);
+		mechanumDriveTrain.mecanumDrive_Cartesian(helper.handleOverPower(helper.handleDeadband(straffe, throttleDeadband)), helper.handleOverPower(helper.handleDeadband(heading, throttleDeadband)), helper.handleOverPower(helper.handleDeadband(throttle, headingDeadband)), 0.0);
 	}
 		
     public void initDefaultCommand() {
        setDefaultCommand(new DriveTank());
     }
-
 }

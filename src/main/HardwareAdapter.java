@@ -19,12 +19,10 @@ public interface HardwareAdapter extends Constants {
 	public static XboxController xbox = new XboxController(Xbox_Port);
 	
 	//DriveTrain
-	public static Jaguar rearLeftDrive = new Jaguar();
-	public static Jaguar frontLeftDrive = new Jaguar();
-	public static Jaguar rearRightDrive = new Jaguar();
-	public static Jaguar frontRightDrive = new Jaguar();
-	
-	
+	public static Jaguar rearLeftDrive = new Jaguar(LEFT_Drive_Rear);
+	public static Jaguar frontLeftDrive = new Jaguar(LEFT_Drive_Front);
+	public static Jaguar rearRightDrive = new Jaguar(RIGHT_Drive_Rear);
+	public static Jaguar frontRightDrive = new Jaguar(RIGHT_Drive_Front);
 	
 	//Pnuematics
 	public static DoubleSolenoid  popperFront = new DoubleSolenoid(PCM_Port, POPPER_FRONT_EXT, POPPER_FRONT_RET);
