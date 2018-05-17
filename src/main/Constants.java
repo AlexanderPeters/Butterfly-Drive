@@ -70,15 +70,15 @@ public interface Constants {
 	// PNEUMATICS (PCM)
 	public final int PCM_Port = 1;
 
-	public final int GEAR_EXT = 2;//Currently in by default
+	/*public final int GEAR_EXT = 2;//Currently in by default
 	public final int GEAR_RET = 5;
 	public final int SHIFTER_EXT = 6;//(isCompRobot? 6:3);
-	public final int SHIFTER_RET = 3;//(isCompRobot? 3:6);
+	public final int SHIFTER_RET = 3;//(isCompRobot? 3:6);*/
 	
-	public final int POPPER_FRONT_EXT = 0;
-	public final int POPPER_FRONT_RET = 0;
-	public final int POPPER_REAR_EXT = 0;
-	public final int POPPER_REAR_RET = 0;
+	public final int POPPER_FRONT_EXT = 2;
+	public final int POPPER_FRONT_RET = 5;
+	public final int POPPER_REAR_EXT = 6;
+	public final int POPPER_REAR_RET = 3;
 	
 		
 }
