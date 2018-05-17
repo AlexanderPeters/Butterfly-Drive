@@ -26,6 +26,7 @@ public interface Constants {
 	// JOYSTICK DEADBAND'S
 	public final double throttleDeadband = 0.02;
 	public final double headingDeadband = 0.02;
+	public final double strafeDeadband = 0.02;
 	
 	/*************
 	 * CONSTANTS *

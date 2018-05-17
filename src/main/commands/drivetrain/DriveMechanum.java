@@ -16,7 +16,7 @@ public class DriveMechanum extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dt.driveMechanum(OI.getXbox().getSmoothedMainY(), -OI.getXbox().getSmoothedMainX(), -OI.getXbox().getSmoothedAltX());
+    	Robot.dt.driveMechanum(-OI.getXbox().getSmoothedMainY(), -OI.getXbox().getSmoothedMainX(), -OI.getXbox().getSmoothedAltX());
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

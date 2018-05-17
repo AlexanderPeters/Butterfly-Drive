@@ -1,34 +1,54 @@
 package main.subsytems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.Vector2d;
 import main.Constants;
 import main.HardwareAdapter;
 import main.commands.drivetrain.DriveTank;
 import Util.DriveHelper;
-import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveTrain extends Subsystem implements Constants, HardwareAdapter {
-	//Four independently driven wheels re-imagined as 2 tank drives tied together
-	private static RobotDrive tankDriveTrainFront = new RobotDrive(frontLeftDrive, frontRightDrive);
-	private static RobotDrive tankDriveTrainRear = new RobotDrive(rearLeftDrive, rearRightDrive);
-	//Four independently driven wheels re-imagined as a mechanum drive
-	private static RobotDrive mechanumDriveTrain = new RobotDrive(rearLeftDrive, frontLeftDrive, rearRightDrive, frontRightDrive);
-	//Helper to prevent things from going crazy if the joystick reports values greater than 1 or less than -1
 	private DriveHelper helper = new DriveHelper(7.5);
 
 	public DriveTrain() {
-		frontLeftDrive.setInverted(true);
-		rearRightDrive.setInverted(true);		
-	}
-
-	public void driveTank(double throttle, double heading) {
-		tankDriveTrainFront.arcadeDrive(helper.handleOverPower(helper.handleDeadband(throttle, throttleDeadband)), helper.handleOverPower(helper.handleDeadband(heading, headingDeadband)));	   
-		tankDriveTrainRear.arcadeDrive(helper.handleOverPower(helper.handleDeadband(throttle, throttleDeadband)), helper.handleOverPower(helper.handleDeadband(heading, headingDeadband)));	 
+		frontLeftDrive.setInverted(false);
+		rearRightDrive.setInverted(false);		
 	}
 	
-	public void driveMechanum(double throttle, double heading, double straffe) {
-		mechanumDriveTrain.mecanumDrive_Cartesian(helper.handleOverPower(helper.handleDeadband(straffe, throttleDeadband)), helper.handleOverPower(helper.handleDeadband(heading, throttleDeadband)), helper.handleOverPower(helper.handleDeadband(throttle, headingDeadband)), 0.0);
+	public void driveMechanum(double throttle, double heading, double strafe) {
+		driveCartesian(helper.handleOverPower(helper.handleDeadband(strafe, strafeDeadband)), 
+				helper.handleOverPower(helper.handleDeadband(throttle, throttleDeadband)),
+				helper.handleOverPower(helper.handleDeadband(heading, headingDeadband)));
 	}
+	
+	public void arcadeDrive(double throttle, double heading) {
+		throttle = helper.handleOverPower(helper.handleDeadband(throttle, throttleDeadband));
+		heading = helper.handleOverPower(helper.handleDeadband(heading, headingDeadband));
+		tankDrive(throttle + heading, throttle - heading);
+	}
+	
+	public void tankDrive(double leftThrottle, double rightThrottle) {
+		frontLeftDrive.set(leftThrottle);
+		rearLeftDrive.set(leftThrottle);
+		frontRightDrive.set(-rightThrottle);
+		rearRightDrive.set(-rightThrottle);
+	}
+	
+	  public void driveCartesian(double strafe, double throttle, double heading) {
+		    Vector2d input = new Vector2d(strafe, throttle);
+		    input.rotate(0);
+
+		    double[] wheelSpeeds = new double[4];
+		    wheelSpeeds[0] = input.x + input.y + heading;
+		    wheelSpeeds[1] = input.x - input.y + heading;
+		    wheelSpeeds[2] = -input.x + input.y + heading;
+		    wheelSpeeds[3] = -input.x - input.y + heading;
+
+		    frontLeftDrive.set(wheelSpeeds[0]);
+		    frontRightDrive.set(wheelSpeeds[1]);
+		    rearLeftDrive.set(wheelSpeeds[2]);
+		    rearRightDrive.set(wheelSpeeds[3]);
+		  }
 		
     public void initDefaultCommand() {
        setDefaultCommand(new DriveTank());
