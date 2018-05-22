@@ -1,11 +1,11 @@
 package main;
 
 import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Servo;
@@ -19,10 +19,10 @@ public interface HardwareAdapter extends Constants {
 	public static XboxController xbox = new XboxController(Xbox_Port);
 	
 	//DriveTrain
-	public static Jaguar rearLeftDrive = new Jaguar(LEFT_Drive_Rear);
-	public static Jaguar frontLeftDrive = new Jaguar(LEFT_Drive_Front);
-	public static Jaguar rearRightDrive = new Jaguar(RIGHT_Drive_Rear);
-	public static Jaguar frontRightDrive = new Jaguar(RIGHT_Drive_Front);
+	public static WPI_TalonSRX rearLeftDrive = new WPI_TalonSRX(LEFT_Drive_Rear);
+	public static WPI_TalonSRX frontLeftDrive = new WPI_TalonSRX(LEFT_Drive_Front);
+	public static WPI_TalonSRX rearRightDrive = new WPI_TalonSRX(RIGHT_Drive_Rear);
+	public static WPI_TalonSRX frontRightDrive = new WPI_TalonSRX(RIGHT_Drive_Front);
 	
 	//Pnuematics
 	public static DoubleSolenoid  popperFront = new DoubleSolenoid(PCM_Port, POPPER_FRONT_EXT, POPPER_FRONT_RET);
