@@ -16,7 +16,7 @@ public class DriveTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dt.arcadeDrive(-OI.getXbox().getSmoothedMainY(), -OI.getXbox().getSmoothedMainX());
+    	Robot.dt.arcadeDrive(-OI.getXbox().getSmoothedMainY(), -OI.getXbox().getSmoothedAltX());
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

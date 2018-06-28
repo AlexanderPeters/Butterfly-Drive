@@ -85,7 +85,7 @@ public class XboxController extends Joystick{
 	 * @return Cubed value of the X-axis.
 	 */
 	public double getSmoothedMainX() {
-		return Math.pow(super.getRawAxis(0), 3) * -1;
+		return Math.pow(super.getRawAxis(0), 3) *1;
 	}
 	
 	/**
@@ -101,7 +101,7 @@ public class XboxController extends Joystick{
 	 * @return Cubed value of the alternate X-axis.
 	 */
 	public double getSmoothedAltX() {
-		return Math.pow(super.getRawAxis(4), 3) * -1;
+		return Math.pow(super.getRawAxis(4), 3) * 1;
 	}
 	
 	/**
