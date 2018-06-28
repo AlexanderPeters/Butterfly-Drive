@@ -3,6 +3,7 @@ package lib.joystick;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import main.commands.pnuematics.PopUp;
 
 public class XboxController extends Joystick{
 	
@@ -46,6 +47,10 @@ public class XboxController extends Joystick{
 		rightTrigger = new AnalogButton(this, 3, 0.1);
 	}
 	
+	
+	public XboxController JoystickButton() {
+		return this;
+	}
 	/**
 	 * Gets the X-axis of the left-thumbstick.
 	 * @return Value of the X-axis.

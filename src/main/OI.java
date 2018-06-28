@@ -2,6 +2,7 @@ package main;
 
 import lib.joystick.XboxController;
 import main.commands.drivetrain.DriveMechanum;
+import main.commands.pnuematics.Pop;
 import main.commands.pnuematics.PopDown;
 import main.commands.pnuematics.PopUp;
 
@@ -23,6 +24,8 @@ public class OI implements Constants, HardwareAdapter {
 		xbox.leftBumper.whenPressed(new PopUp());
 		xbox.leftBumper.whenReleased(new PopDown());	
 		xbox.leftBumper.whileHeld(new DriveMechanum());
+		xbox.b.whenPressed(new PopUp());
+		xbox.y.whenPressed(new PopDown());
 	}
 }
 
